@@ -1,0 +1,6 @@
+framework module Pods_UzhNULearn {
+  umbrella header "Pods-UzhNULearn-umbrella.h"
+
+  export *
+  module * { export * }
+}
