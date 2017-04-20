@@ -10,7 +10,7 @@
 		3E84C2CF54C9B8CD7D81DF10 /* Pods_UzhNULearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750F85C2EE8671A8EF41259 /* Pods_UzhNULearn.framework */; };
 		7889EDF774E47690817E60E0 /* Pods_UzhNULearnUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97ED5B5E0C74EE9029722C00 /* Pods_UzhNULearnUITests.framework */; };
 		D8038D2E1EA4D432005D8764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D2D1EA4D432005D8764 /* AppDelegate.swift */; };
-		D8038D301EA4D432005D8764 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D2F1EA4D432005D8764 /* ViewController.swift */; };
+		D8038D301EA4D432005D8764 /* CourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D2F1EA4D432005D8764 /* CourseController.swift */; };
 		D8038D331EA4D432005D8764 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8038D311EA4D432005D8764 /* Main.storyboard */; };
 		D8038D361EA4D432005D8764 /* UzhNULearn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D8038D341EA4D432005D8764 /* UzhNULearn.xcdatamodeld */; };
 		D8038D381EA4D432005D8764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8038D371EA4D432005D8764 /* Assets.xcassets */; };
@@ -39,7 +39,7 @@
 		C423A7DFFF2004F9A91D8130 /* Pods-UzhNULearnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UzhNULearnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UzhNULearnUITests/Pods-UzhNULearnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D8038D2A1EA4D432005D8764 /* UzhNULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UzhNULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8038D2D1EA4D432005D8764 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D8038D2F1EA4D432005D8764 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8038D2F1EA4D432005D8764 /* CourseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseController.swift; sourceTree = "<group>"; };
 		D8038D321EA4D432005D8764 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8038D351EA4D432005D8764 /* UzhNULearn.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UzhNULearn.xcdatamodel; sourceTree = "<group>"; };
 		D8038D371EA4D432005D8764 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +115,7 @@
 		D8038D2C1EA4D432005D8764 /* UzhNULearn */ = {
 			isa = PBXGroup;
 			children = (
+				D81D05601EA54BED0007D370 /* Model */,
 				D8038D501EA4D9B5005D8764 /* Controller */,
 				D8038D2D1EA4D432005D8764 /* AppDelegate.swift */,
 				D8038D311EA4D432005D8764 /* Main.storyboard */,
@@ -140,9 +141,16 @@
 			isa = PBXGroup;
 			children = (
 				D8038D511EA4DA16005D8764 /* LoginController.swift */,
-				D8038D2F1EA4D432005D8764 /* ViewController.swift */,
+				D8038D2F1EA4D432005D8764 /* CourseController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		D81D05601EA54BED0007D370 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,7 +358,7 @@
 			files = (
 				D8038D361EA4D432005D8764 /* UzhNULearn.xcdatamodeld in Sources */,
 				D8038D521EA4DA16005D8764 /* LoginController.swift in Sources */,
-				D8038D301EA4D432005D8764 /* ViewController.swift in Sources */,
+				D8038D301EA4D432005D8764 /* CourseController.swift in Sources */,
 				D8038D2E1EA4D432005D8764 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +497,7 @@
 			baseConfigurationReference = 80403B00FC065E3A4B3182A0 /* Pods-UzhNULearn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = UzhNULearn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -503,6 +512,7 @@
 			baseConfigurationReference = AF952185DA2295527BDDD712 /* Pods-UzhNULearn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = UzhNULearn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -559,6 +569,7 @@
 				D8038D4C1EA4D432005D8764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8038D4D1EA4D432005D8764 /* Build configuration list for PBXNativeTarget "UzhNULearnUITests" */ = {
 			isa = XCConfigurationList;
@@ -567,6 +578,7 @@
 				D8038D4F1EA4D432005D8764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

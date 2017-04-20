@@ -20,7 +20,6 @@ class LoginController: UIViewController {
         return view
     }()
     
-    
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
@@ -299,7 +298,6 @@ class LoginController: UIViewController {
 }
 
 extension UIColor{
-    
     convenience init(r: CGFloat, g: CGFloat, b:CGFloat) {
         self.init(red: r/255, green: g/255, blue: b/255, alpha:1)
     }
