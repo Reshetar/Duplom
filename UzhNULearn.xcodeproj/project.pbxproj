@@ -18,6 +18,9 @@
 		D8038D461EA4D432005D8764 /* UzhNULearnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D451EA4D432005D8764 /* UzhNULearnUITests.swift */; };
 		D8038D521EA4DA16005D8764 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D511EA4DA16005D8764 /* LoginController.swift */; };
 		D8038D541EA4F0FC005D8764 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D8038D531EA4F0FC005D8764 /* GoogleService-Info.plist */; };
+		D84A3C341EAE21BD0087ABB5 /* SubjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84A3C331EAE21BD0087ABB5 /* SubjectController.swift */; };
+		D8C2A7C11EB0B8D0007E79EE /* OSLessonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C2A7C01EB0B8D0007E79EE /* OSLessonsController.swift */; };
+		D8C2A7C31EB0BC9A007E79EE /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C2A7C21EB0BC9A007E79EE /* Lesson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,9 @@
 		D8038D471EA4D432005D8764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8038D511EA4DA16005D8764 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D8038D531EA4F0FC005D8764 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D84A3C331EAE21BD0087ABB5 /* SubjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectController.swift; sourceTree = "<group>"; };
+		D8C2A7C01EB0B8D0007E79EE /* OSLessonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLessonsController.swift; sourceTree = "<group>"; };
+		D8C2A7C21EB0BC9A007E79EE /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,8 @@
 			children = (
 				D8038D511EA4DA16005D8764 /* LoginController.swift */,
 				D8038D2F1EA4D432005D8764 /* CourseController.swift */,
+				D84A3C331EAE21BD0087ABB5 /* SubjectController.swift */,
+				D8C2A7C01EB0B8D0007E79EE /* OSLessonsController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -149,6 +157,7 @@
 		D81D05601EA54BED0007D370 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8C2A7C21EB0BC9A007E79EE /* Lesson.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -356,10 +365,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84A3C341EAE21BD0087ABB5 /* SubjectController.swift in Sources */,
 				D8038D361EA4D432005D8764 /* UzhNULearn.xcdatamodeld in Sources */,
 				D8038D521EA4DA16005D8764 /* LoginController.swift in Sources */,
 				D8038D301EA4D432005D8764 /* CourseController.swift in Sources */,
 				D8038D2E1EA4D432005D8764 /* AppDelegate.swift in Sources */,
+				D8C2A7C31EB0BC9A007E79EE /* Lesson.swift in Sources */,
+				D8C2A7C11EB0B8D0007E79EE /* OSLessonsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

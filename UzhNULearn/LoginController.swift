@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 class LoginController: UIViewController {
+    
+    var courseController = CourseController()
 
     let inputsContainerView: UIView = {
         let view = UIView()
@@ -23,7 +25,7 @@ class LoginController: UIViewController {
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("Register", for: .normal)
+        button.setTitle("Зареєструватись", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -52,14 +54,28 @@ class LoginController: UIViewController {
         
             if error != nil {
                 print(error!)
+                self.displayErrorMessage()
                 return
             }
             
             //succesfully loger in our user
+            
+            self.courseController.fetchUserAndSetupNavBarTitle()
+            
             self.dismiss(animated: true, completion: nil)
             
         })
         
+    }
+    
+    func displayErrorMessage(){
+        let errorMessage = UIAlertController(title: "Помилка", message: "Е-mail або пароль не коректний", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okButton = UIAlertAction(title: "OК", style: UIAlertActionStyle.default, handler: nil)
+        
+        errorMessage.addAction(okButton)
+        
+        self.present(errorMessage, animated: true, completion: nil)
     }
     
     func handleRegister(){
@@ -71,6 +87,7 @@ class LoginController: UIViewController {
         
             if error != nil {
                 print(error!)
+                self.displayErrorMessage()
                 return
             }
             
@@ -89,6 +106,10 @@ class LoginController: UIViewController {
                     return
                 }
                 
+//                self.courseController.fetchUserAndSetupNavBarTitle()
+                
+                self.courseController.navigationItem.title = values["name"]
+                
                 self.dismiss(animated: true, completion: nil)
                 
                 print("Saved user succesfully into Firebase db")
@@ -102,7 +123,7 @@ class LoginController: UIViewController {
     
     let nameTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Name"
+        tf.placeholder = "Ім'я"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -116,7 +137,7 @@ class LoginController: UIViewController {
     
     let emailTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email address"
+        tf.placeholder = "E-mail адрес"
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -130,7 +151,7 @@ class LoginController: UIViewController {
     
     let passwordTextField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.placeholder = "Пароль"
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isSecureTextEntry = true
         return tf
@@ -152,7 +173,7 @@ class LoginController: UIViewController {
     }()
     
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["Login", "Register"])
+        let sc = UISegmentedControl(items: ["Вхід", "Реєстрація"])
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = UIColor.white
         sc.selectedSegmentIndex = 1
@@ -173,6 +194,7 @@ class LoginController: UIViewController {
         //change height of nameTextField
         nameTextFieldHeightAnchor?.isActive = false
         nameTextField.placeholder = ""
+        nameTextField.text = ""
         nameTextFieldHeightAnchor = nameTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 0 : 1/3)
         nameTextFieldHeightAnchor?.isActive = true
         
@@ -186,9 +208,8 @@ class LoginController: UIViewController {
         passwordTextFieldHeightAnchor?.isActive = true
         
         if (loginRegisterSegmentedControl.selectedSegmentIndex == 1){
-            nameTextField.placeholder = "Name"
+            nameTextField.placeholder = "Ім'я"
         }
-        
     }
     
     override func viewDidLoad() {
