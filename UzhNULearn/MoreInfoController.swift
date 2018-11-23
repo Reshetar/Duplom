@@ -24,11 +24,9 @@ class MoreInfoController: UIViewController {
 
         view.backgroundColor = UIColor.white
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target:self, action: #selector(handleCancel))
+        navigationItem.title = nameValue
         
-        navigationItem.title = itemName
-        
-        textView.text = itemText
+        textView.text = textValue
         
         view.addSubview(textView)
         
@@ -40,13 +38,11 @@ class MoreInfoController: UIViewController {
     func setupTextLabelView() {
         //x,y,width,height
         textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textView.topAnchor.constraint(equalTo: view.topAnchor, constant: 15).isActive = true
-        textView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
+        textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        textView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         textView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
     
-    func handleCancel (){
-        dismiss(animated: true, completion: nil)
-    }
+    
  
 }

@@ -14,7 +14,7 @@ class CourseController: UIViewController {
     lazy var Course1Button: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("Курс 1", for: .normal)
+        button.setTitle("1-ий курс, КІ", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -28,7 +28,7 @@ class CourseController: UIViewController {
     lazy var Course2Button: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("2-ий курс", for: .normal)
+        button.setTitle("2-ий курс, КІ", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -42,7 +42,7 @@ class CourseController: UIViewController {
     lazy var Course3Button: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("Course 3", for: .normal)
+        button.setTitle("3-ий курс, КІ", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -56,7 +56,7 @@ class CourseController: UIViewController {
     lazy var Course4Button: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("Course 4", for: .normal)
+        button.setTitle("4-ий курс, КІ", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -70,7 +70,7 @@ class CourseController: UIViewController {
     lazy var Course5Button: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r:80,g:101,b:161)
-        button.setTitle("Course 5", for: .normal)
+        button.setTitle("5-ий курс, КІ", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -108,7 +108,7 @@ class CourseController: UIViewController {
         
     }
     
-    func displayErrorMessage(){
+    @objc func displayErrorMessage(){
         let errorMessage = UIAlertController(title: "Помилка", message: "Курс на стадії розробки", preferredStyle: UIAlertControllerStyle.alert)
         
         let okButton = UIAlertAction(title: "OК", style: UIAlertActionStyle.default, handler: nil)
@@ -118,7 +118,7 @@ class CourseController: UIViewController {
         self.present(errorMessage, animated: true, completion: nil)
     }
     
-    func handleSubjectContoller(){
+    @objc func handleSubjectContoller(){
         let newSubjectController = SubjectController()
         let navController = UINavigationController(rootViewController: newSubjectController)
         present(navController, animated: true, completion: nil)
@@ -169,6 +169,10 @@ class CourseController: UIViewController {
         if FIRAuth.auth()?.currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
         } else {
+            
+            uidUser = (FIRAuth.auth()?.currentUser?.uid)!
+            emailUser = (FIRAuth.auth()?.currentUser?.email)!
+            
             fetchUserAndSetupNavBarTitle()
         }
     }
@@ -186,7 +190,7 @@ class CourseController: UIViewController {
         }, withCancel: nil)
     }
 
-    func handleLogout(){
+    @objc func handleLogout(){
         
         do{
             try FIRAuth.auth()?.signOut()

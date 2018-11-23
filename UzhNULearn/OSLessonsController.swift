@@ -9,9 +9,7 @@
 import UIKit
 import Firebase
 
-var myIndex = 0
-var itemName: String?
-var itemText: String?
+var indexSelectLessonValue: Int?
 
 class OSLessonsController: UITableViewController {
 
@@ -19,11 +17,27 @@ class OSLessonsController: UITableViewController {
     
     var lessons = [Lesson]()
     
+    lazy var AttButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r:80,g:101,b:161)
+        button.setTitle("Додаткові матеріали предмету", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor(r:255,g:255,b:255), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 5
+        
+        button.addTarget(self, action: #selector(handleAttachmentPage), for: .touchUpInside)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target:self, action: #selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Пройти тест", style: .plain, target: self, action: #selector(handleTest))
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
         
         navigationItem.title = "Операційні системи"
         
@@ -34,12 +48,31 @@ class OSLessonsController: UITableViewController {
         
         fetchLesson()
         
+        view.addSubview(AttButton)
+        
+        setupAttButton()
+        
     }
     
-    func handleTest(){
-        let newTestQuestionController = TestQuestionController()
-        let navController = UINavigationController(rootViewController: newTestQuestionController)
+    func displayErrorLessonOrLabMessage(){
+        let errorMessage = UIAlertController(title: "Помилка", message: "Лекція або лабораторна робота на стадії розробки", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okButton = UIAlertAction(title: "OК", style: UIAlertActionStyle.default, handler: nil)
+        
+        errorMessage.addAction(okButton)
+        
+        self.present(errorMessage, animated: true, completion: nil)
+    }
+    
+    @objc func handleAttachmentPage(){
+        let newAttachmentPage = AttachmentPage()
+        let navController = UINavigationController(rootViewController: newAttachmentPage)
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc func handleTest(){
+        let newBothTestsController = BothModulesTestController()
+        navigationController?.pushViewController(newBothTestsController, animated: true)
     }
     
     func fetchLesson(){
@@ -59,6 +92,14 @@ class OSLessonsController: UITableViewController {
         }, withCancel: nil)
     }
     
+    func setupAttButton() {
+        //x,y,width,height
+        AttButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        AttButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 930).isActive = true
+        AttButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
+        AttButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lessons.count
     }
@@ -73,27 +114,36 @@ class OSLessonsController: UITableViewController {
         
         let lesson = lessons[indexPath.row]
         
-        cell.textLabel?.text = lesson.name
+        
+        if lesson.namelesson == "" {
+            
+            cell.textLabel?.text = lesson.namelab
+            
+        } else {
+            cell.textLabel?.text = lesson.namelesson
+        }
         
         return cell
         
     }
     
-    func handleCancel (){
-        dismiss(animated: true, completion: nil)
+    @objc func handleCancel (){
+        
+        let controller = SubjectController()
+        navigationController?.pushViewController(controller, animated: true)
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let lesson = lessons[indexPath.row]
+        indexSelectLessonValue = indexPath.row + 1
         
-        myIndex = indexPath.row
-        itemName = lesson.name
-        itemText = lesson.text
+        let SectionController = OSSectionController()
+        navigationController?.pushViewController(SectionController, animated: true)
         
-        let newOSLessonsController = MoreInfoController()
-        let navController = UINavigationController(rootViewController: newOSLessonsController)
-        present(navController, animated: true, completion: nil)
+        if indexSelectLessonValue! > 1 {
+            self.displayErrorLessonOrLabMessage()
+        }
         
     }
     
@@ -111,7 +161,7 @@ class HeaderLessons: UITableViewHeaderFooterView {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Лекції та лабораторні роботи з ОС"
+        label.text = "Лекції та лабораторні роботи"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
@@ -121,6 +171,7 @@ class HeaderLessons: UITableViewHeaderFooterView {
         addSubview(nameLabel)
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        
     }
 }
 

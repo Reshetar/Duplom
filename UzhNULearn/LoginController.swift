@@ -9,9 +9,14 @@
 import UIKit
 import Firebase
 
+var uidUser = ""
+var emailUser = ""
+
 class LoginController: UIViewController {
     
     var courseController = CourseController()
+    
+   
 
     let inputsContainerView: UIView = {
         let view = UIView()
@@ -35,7 +40,7 @@ class LoginController: UIViewController {
         return button
     }()
     
-    func handleLoginRegister(){
+    @objc func handleLoginRegister(){
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
         } else{
@@ -59,6 +64,9 @@ class LoginController: UIViewController {
             }
             
             //succesfully loger in our user
+            
+            uidUser = (user?.uid)!
+            emailUser = (user?.email)!
             
             self.courseController.fetchUserAndSetupNavBarTitle()
             
@@ -94,6 +102,9 @@ class LoginController: UIViewController {
             guard (user?.uid) != nil else {
                 return
             }
+            
+            uidUser = (user?.uid)!
+            emailUser = (user?.email)!
             
             //successfully authenticated user
             let ref = FIRDatabase.database().reference(fromURL: "https://uzhnulearn.firebaseio.com/")
@@ -181,7 +192,7 @@ class LoginController: UIViewController {
         return sc
     }()
     
-    func handleLoginRegisterChange(){
+    @objc func handleLoginRegisterChange(){
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
         loginRegisterButton.setTitle(title, for: .normal)
         
