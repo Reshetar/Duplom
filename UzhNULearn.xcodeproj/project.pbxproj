@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3E84C2CF54C9B8CD7D81DF10 /* Pods_UzhNULearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6750F85C2EE8671A8EF41259 /* Pods_UzhNULearn.framework */; };
 		7889EDF774E47690817E60E0 /* Pods_UzhNULearnUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97ED5B5E0C74EE9029722C00 /* Pods_UzhNULearnUITests.framework */; };
+		B45E4DE221B02E1000E57359 /* InfoSubjectPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45E4DE121B02E1000E57359 /* InfoSubjectPage.swift */; };
+		B45E4DE421B06C4500E57359 /* QuestionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45E4DE321B06C4500E57359 /* QuestionPage.swift */; };
 		B4F6E31B218236F200F61B27 /* AttachmentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F6E31A218236F200F61B27 /* AttachmentPage.swift */; };
 		D8038D2E1EA4D432005D8764 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D2D1EA4D432005D8764 /* AppDelegate.swift */; };
 		D8038D301EA4D432005D8764 /* CourseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8038D2F1EA4D432005D8764 /* CourseController.swift */; };
@@ -49,6 +51,8 @@
 		80403B00FC065E3A4B3182A0 /* Pods-UzhNULearn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UzhNULearn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UzhNULearn/Pods-UzhNULearn.debug.xcconfig"; sourceTree = "<group>"; };
 		97ED5B5E0C74EE9029722C00 /* Pods_UzhNULearnUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UzhNULearnUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF952185DA2295527BDDD712 /* Pods-UzhNULearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UzhNULearn.release.xcconfig"; path = "Pods/Target Support Files/Pods-UzhNULearn/Pods-UzhNULearn.release.xcconfig"; sourceTree = "<group>"; };
+		B45E4DE121B02E1000E57359 /* InfoSubjectPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSubjectPage.swift; sourceTree = "<group>"; };
+		B45E4DE321B06C4500E57359 /* QuestionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPage.swift; sourceTree = "<group>"; };
 		B4F6E31A218236F200F61B27 /* AttachmentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentPage.swift; sourceTree = "<group>"; };
 		C423A7DFFF2004F9A91D8130 /* Pods-UzhNULearnUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UzhNULearnUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UzhNULearnUITests/Pods-UzhNULearnUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D8038D2A1EA4D432005D8764 /* UzhNULearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UzhNULearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +180,8 @@
 				D819A7EB1EC2472A009F432E /* GeneralModulController.swift */,
 				D89166AA1EB8C18C004A650C /* FirstModulTestController.swift */,
 				B4F6E31A218236F200F61B27 /* AttachmentPage.swift */,
+				B45E4DE121B02E1000E57359 /* InfoSubjectPage.swift */,
+				B45E4DE321B06C4500E57359 /* QuestionPage.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -407,6 +413,8 @@
 				D89166AD1EB8DD6F004A650C /* TestModel.swift in Sources */,
 				D8038D301EA4D432005D8764 /* CourseController.swift in Sources */,
 				D8038D2E1EA4D432005D8764 /* AppDelegate.swift in Sources */,
+				B45E4DE221B02E1000E57359 /* InfoSubjectPage.swift in Sources */,
+				B45E4DE421B06C4500E57359 /* QuestionPage.swift in Sources */,
 				D86D25321EBB870B00C24B6E /* NameModulModel.swift in Sources */,
 				D819A7EC1EC2472A009F432E /* GeneralModulController.swift in Sources */,
 				D86D252E1EBB2C5300C24B6E /* OSSectionController.swift in Sources */,

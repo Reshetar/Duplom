@@ -1,15 +1,15 @@
 //
-//  AttachmentPage.swift
+//  QuestionPage.swift
 //  UzhNULearn
 //
-//  Created by Reshetar Yevhen on 10/25/18.
+//  Created by Reshetar Yevhen on 11/29/18.
 //  Copyright © 2018 Evgen Reshetar. All rights reserved.
 //
 
 import Foundation
 import Firebase
 
-class AttachmentPage: UIViewController {
+class QuestionPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,12 +17,10 @@ class AttachmentPage: UIViewController {
         view.backgroundColor = UIColor(r: 255, g: 255, b: 255)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target:self, action: #selector(handleCancel))
-       
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
         
-        navigationItem.title = "Додаткові матеріали предмету"
-        
-        
+        navigationItem.title = "Опитування"
         
     }
     
@@ -33,6 +31,3 @@ class AttachmentPage: UIViewController {
         
     }
 }
-
-
-

@@ -9,6 +9,7 @@
 import UIKit
 
 class Lesson: NSObject {
+    var info = ""
     var namelesson = ""
     var namelab = ""
     var les1sec = ""
