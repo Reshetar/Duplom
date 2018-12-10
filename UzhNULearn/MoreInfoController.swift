@@ -15,7 +15,6 @@ class MoreInfoController: UIViewController {
         text.textColor = UIColor.black
         text.translatesAutoresizingMaskIntoConstraints = false
         text.font = .systemFont(ofSize: 16)
-        
         return text
     }()
     
@@ -31,7 +30,6 @@ class MoreInfoController: UIViewController {
         view.addSubview(textView)
         
         setupTextLabelView()
-        
         
     }
     

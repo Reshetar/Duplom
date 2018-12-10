@@ -12,9 +12,9 @@ import UIKit
 
 class InfoSubjectPage: UIViewController {
     
-    var userName = ""
+    var infoList = ""
     
-    var textView: UITextView = {
+    var infoTextView: UITextView = {
         let text = UITextView()
         text.textColor = UIColor.black
         text.translatesAutoresizingMaskIntoConstraints = false
@@ -34,44 +34,38 @@ class InfoSubjectPage: UIViewController {
         
         navigationItem.title = "Інформація про предмет"
         
-        fetchLessonInfo()
+        fetchInfo()
         
-        print("fff " + userName)
-        
-        textView.text = textValue
-
-        view.addSubview(textView)
-
-        setupTextLabelView()
-        
-        
+        view.addSubview(infoTextView)
         
     }
     
-    func fetchLessonInfo(){
+    func fetchInfo(){
 
-        FIRDatabase.database().reference().child("courses").child("subjects3").child("os").child("part 1").observe(.childAdded, with: { (snapshot) in
-        
+        FIRDatabase.database().reference().child("courses").child("subjects3").child("other").child("os").child("info").observe(.childAdded, with: { (snapshot) in
+            
             if !snapshot.exists() { return }
             
-            self.userName = snapshot.value as! String
+            let textFromFB = snapshot.value as! String
+            self.infoList = textFromFB
             
-            print(self.userName)
+            self.infoTextView.text = textFromFB
+            
+            self.setupTextInfoLabelView()
             
         })
-        
+    
     }
     
-    func setupTextLabelView() {
+    func setupTextInfoLabelView() {
         //x,y,width,height
-        textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        textView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        textView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+        infoTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoTextView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        infoTextView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        infoTextView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     }
     
     @objc func handleCancel (){
-        
         let controller = OSLessonsController()
         navigationController?.pushViewController(controller, animated: true)
         

@@ -104,8 +104,6 @@ class GeneralModulController: UITableViewController {
         
         let test = tests[indexPath.row]
         
-        
-        
         if indexValue == 0 {
             
             let question = questions[indexPath.startIndex]
@@ -381,9 +379,7 @@ class GeneralModulController: UITableViewController {
 }
 
 class GeneralResultController: UIViewController {
-    
-    
-    
+ 
     let resultLabel: UILabel = {
         let label = UILabel()
         label.text = "Вітаю"
@@ -463,8 +459,6 @@ class GeneralResultController: UIViewController {
         let navController = UINavigationController(rootViewController: newOSLessonsController)
         present(navController, animated: true, completion: nil)
     }
-    
-    
 }
 
 class GeneralQuestionsHeader: UITableViewHeaderFooterView {

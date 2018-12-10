@@ -16,8 +16,6 @@ class LoginController: UIViewController {
     
     var courseController = CourseController()
     
-   
-
     let inputsContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.white
@@ -195,9 +193,6 @@ class LoginController: UIViewController {
     @objc func handleLoginRegisterChange(){
         let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
         loginRegisterButton.setTitle(title, for: .normal)
-        
-        
-
         
         //change height of inputContainer
         inputsContainerViewHeightAnchor?.constant = loginRegisterSegmentedControl.selectedSegmentIndex == 0 ? 100 : 150

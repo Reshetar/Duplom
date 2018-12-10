@@ -59,6 +59,20 @@ class OSLessonsController: UITableViewController {
         return button
     }()
     
+    lazy var ScoreButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(r:80,g:101,b:161)
+        button.setTitle("Оцінювання", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor(r:255,g:255,b:255), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.layer.cornerRadius = 0
+        
+        button.addTarget(self, action: #selector(handleScorePage), for: .touchUpInside)
+        
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,8 +83,7 @@ class OSLessonsController: UITableViewController {
         
         navigationItem.title = "Операційні системи"
         
-        tableView.register(HeaderLessons.self, forHeaderFooterViewReuseIdentifier: "headerId")
-        tableView.sectionHeaderHeight = 50
+        tableView.contentInset.top = 180
         
         tableView.tableFooterView = UIView()
         
@@ -79,10 +92,12 @@ class OSLessonsController: UITableViewController {
         view.addSubview(InfoSubjectButton)
         view.addSubview(AttButton)
         view.addSubview(QuestionButton)
-        
+        view.addSubview(ScoreButton)
+
         setupInfoSubjectButton()
         setupAttButton()
         setupQuestionButton()
+        setupScoreButton()
         
     }
     
@@ -114,6 +129,12 @@ class OSLessonsController: UITableViewController {
         present(navController, animated: true, completion: nil)
     }
     
+    @objc func handleScorePage(){
+        let newAttachmentPage = ScorePage()
+        let navController = UINavigationController(rootViewController: newAttachmentPage)
+        present(navController, animated: true, completion: nil)
+    }
+    
     @objc func handleTest(){
         let newBothTestsController = BothModulesTestController()
         navigationController?.pushViewController(newBothTestsController, animated: true)
@@ -139,7 +160,7 @@ class OSLessonsController: UITableViewController {
     func setupInfoSubjectButton() {
         //x,y,width,height
         InfoSubjectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        InfoSubjectButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 95).isActive = true
+        InfoSubjectButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -135).isActive = true
         InfoSubjectButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
         InfoSubjectButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
@@ -147,7 +168,7 @@ class OSLessonsController: UITableViewController {
     func setupAttButton() {
         //x,y,width,height
         AttButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        AttButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 140).isActive = true
+        AttButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -90).isActive = true
         AttButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
         AttButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
@@ -155,18 +176,24 @@ class OSLessonsController: UITableViewController {
     func setupQuestionButton() {
         //x,y,width,height
         QuestionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        QuestionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 185).isActive = true
+        QuestionButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -45).isActive = true
         QuestionButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
         QuestionButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    }
+    
+    func setupScoreButton() {
+        //x,y,width,height
+        ScoreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        ScoreButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        ScoreButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
+        ScoreButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lessons.count
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerId")
-    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -209,29 +236,6 @@ class OSLessonsController: UITableViewController {
     
 }
 
-class HeaderLessons: UITableViewHeaderFooterView {
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Матеріали предмета"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        return label
-    }()
-    
-    func setupViews(){
-        addSubview(nameLabel)
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        
-    }
-}
+
+
 
